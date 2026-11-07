@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bloom TTS - multilingual text-to-speech with a focus on Zambian languages.">
+  <meta name="theme-color" content="#0f766e">
+  <title>Bloom TTS - Multilingual Text-to-Speech</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <h1>Bloom TTS</h1>
+        <p class="tagline">Multilingual text-to-speech, built for Zambian languages.</p>
+      </div>
+      <span id="serverStatus" class="pill" data-state="pending">Connecting...</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <noscript><p class="notice" data-tone="warn">Bloom TTS needs JavaScript to run.</p></noscript>
+    <p id="unsupported" class="notice" data-tone="warn" hidden>
+      Your browser does not support the SpeechSynthesis API. Try an up-to-date Chrome, Edge, Safari or Firefox.
+    </p>
+
+    <section class="card">
+      <label for="text">Text to speak</label>
+      <textarea id="text" rows="7" placeholder="Type or paste your text here..."></textarea>
+      <div class="row between">
+        <button id="sample" class="link-btn" type="button">Insert sample text</button>
+        <span id="charCount" class="muted">0 / 5000</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="grid2">
+        <div class="field">
+          <label for="language">Language</label>
+          <select id="language"></select>
+          <p id="detected" class="hint"></p>
+        </div>
+        <div class="field">
+          <label for="voice">Voice</label>
+          <select id="voice"></select>
+        </div>
+      </div>
+
+      <p id="voiceStatus" class="notice" data-tone="info" role="status"></p>
+      <p id="langNote" class="hint"></p>
+
+      <label id="fallbackWrap" class="check" hidden>
+        <input type="checkbox" id="fallback">
+        <span>Use an approximate fallback voice anyway. Pronunciation will be incorrect.</span>
+      </label>
+    </section>
+
+    <section class="card">
+      <div class="slider">
+        <label for="rate">Speed <output id="rateOut" for="rate">1.0x</output></label>
+        <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+      </div>
+      <div class="slider">
+        <label for="pitch">Pitch <output id="pitchOut" for="pitch">1.0</output></label>
+        <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
+      </div>
+      <div class="slider">
+        <label for="volume">Volume <output id="volumeOut" for="volume">100%</output></label>
+        <input type="range" id="volume" min="0" max="1" step="0.05" value="1">
+      </div>
+      <p class="hint">Speed, pitch and volume changes apply from the next part of the text. Some mobile browsers ignore pitch.</p>
+    </section>
+
+    <section class="card">
+      <div class="controls">
+        <button id="speak" class="btn primary" type="button">Play</button>
+        <button id="pause" class="btn" type="button">Pause</button>
+        <button id="resume" class="btn" type="button">Resume</button>
+        <button id="stop" class="btn danger" type="button">Stop</button>
+      </div>
+      <progress id="progress" value="0" max="1" hidden></progress>
+      <p id="status" class="status" role="status" aria-live="polite">Ready.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Bloom TTS v<span id="version">1.0.0</span> &middot; Uses the voices installed on your device. Dedicated Zambian voices are on the roadmap.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

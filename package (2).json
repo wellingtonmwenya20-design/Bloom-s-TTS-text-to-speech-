@@ -1,0 +1,27 @@
+{
+  "name": "bloom-tts",
+  "version": "1.0.0",
+  "description": "Bloom TTS - a multilingual text-to-speech engine with a long-term focus on Zambian languages.",
+  "type": "module",
+  "main": "src/server.js",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "keywords": [
+    "text-to-speech",
+    "tts",
+    "zambia",
+    "bemba",
+    "nyanja",
+    "express"
+  ],
+  "license": "MIT"
+}
